@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - docker build -t coworking-analytics -f analytics/Dockerfile .
+      - docker tag coworking-analytics:latest 987964691702.dkr.ecr.us-east-1.amazonaws.com/docker-starter:$CODEBUILD_BUILD_NUMBER
+  post_build:
+    commands:
+      - docker push 987964691702.dkr.ecr.us-east-1.amazonaws.com/docker-starter:$CODEBUILD_BUILD_NUMBER 
+
+artifacts:
+  files: 
+    - '**/*'
