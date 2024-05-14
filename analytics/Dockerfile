@@ -1,4 +1,4 @@
-FROM python:3.12.0
+FROM python:3.10.0
 
 # Set the working directory in the container to /app
 WORKDIR /app
@@ -20,4 +20,4 @@ ENV DB_NAME=mydatabase
 EXPOSE 5000
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "analytics/app.py"]
