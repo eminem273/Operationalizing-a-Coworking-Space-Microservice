@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 987964691702.dkr.ecr.us-east-1.amazonaws.com/docker-starter:10
+        image: 987964691702.dkr.ecr.us-east-1.amazonaws.com/docker-starter:13
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
